@@ -1,0 +1,105 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+private:
+    string author;
+    string title;
+    int year;
+
+public:
+    // Конструктор класса Book
+    Book(string a, string t, int y) {
+        author = a;
+        title = t;
+        year = y;
+    }
+
+    //  получение автора книги
+    string getAuthor() {
+        return author;
+    }
+
+    //  получение названия книги
+    string getTitle() {
+        return title;
+    }
+
+    //  получение года написания книги
+    int getYear() {
+        return year;
+    }
+
+    //  изменение автора книги
+    void setAuthor(string a) {
+        author = a;
+    }
+
+    // изменение названия книги
+    void setTitle(string t) {
+        title = t;
+    }
+
+    //  изменение года написания книги
+    void setYear(int y) {
+        year = y;
+    }
+};
+
+class Reader {
+private:
+    string fullName;
+    string libraryCardNumber;
+    string faculty;
+    string birthDate;
+    string phone;
+
+public:
+    // Конструктор класса Reader
+    Reader(string name, string card, string fac, string dob, string ph) {
+        fullName = name;
+        libraryCardNumber = card;
+        faculty = fac;
+        birthDate = dob;
+        phone = ph;
+    }
+
+    //  взятие книги
+    void takeBook(Book book) {
+        cout << fullName << " взял книгу: " << book.getTitle()
+             << " (" << book.getAuthor() << ", "
+             << book.getYear() << ")" << endl;
+    }
+
+    //  возврат книги
+    void returnBook(Book book) {
+        cout << fullName << " вернул книгу: " << book.getTitle()
+             << " (" << book.getAuthor() << ", "
+             << book.getYear() << ")" << endl;
+    }
+};
+
+int main() {
+    system("chcp 65001");
+    //  объекты класса Book
+    Book book1("Александр Пушкин", "Евгений Онегин", 1833);
+    Book book2("Лев Толстой", "Война и мир", 1869);
+
+    // массив объектов класса Reader
+    Reader readers[3] = {
+            Reader("Иванов Иван", "0001", "Исторический", "01.01.1990", "123456789"),
+            Reader("Петров Петр", "0002", "Филологический", "15.05.1985", "987654321"),
+            Reader("Сидоров Сидор", "0003", "Философский", "30.12.1995", "555555555")
+    };
+
+    // Пример взятия книги каждым читателем
+    readers[0].takeBook(book1);
+    readers[1].takeBook(book2);
+
+    // Пример возврата книги каждым читателем
+    readers[0].returnBook(book1);
+    readers[2].returnBook(book2);
+
+    return 0;
+}

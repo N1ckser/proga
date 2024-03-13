@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+class Shape {
+public:
+    virtual double CalculationArea() const {
+        std::cout << "Undefined area calculation\n";
+        return 0.0;
+    }
+};
+
+class Circle : public Shape {
+private:
+    double radius;
+
+public:
+    Circle(double r) : radius(r) {}
+
+    double CalculationArea() const override {
+        return 3.14159 * radius * radius;
+    }
+};
+
+class Rectangle : public Shape {
+private:
+    double width, height;
+
+public:
+    Rectangle(double w, double h) : width(w), height(h) {}
+
+    double CalculationArea() const override {
+        return width * height;
+    }
+};
+
+class Triangle : public Shape {
+private:
+    double base, height;
+
+public:
+    Triangle(double b, double h) : base(b), height(h) {}
+
+    double CalculationArea() const override {
+        return 0.5 * base * height;
+    }
+};
+
+int main() {
+    Circle circle(5);
+    Rectangle rectangle(4, 6);
+    Triangle triangle(3, 4);
+
+    cout << "Circle area: " << circle.CalculationArea() << std::endl;
+    cout << "Rectangle area: " << rectangle.CalculationArea() << std::endl;
+    cout << "Triangle area: " << triangle.CalculationArea() << std::endl;
+
+    return 0;
+}

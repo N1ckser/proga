@@ -1,0 +1,33 @@
+#include <iostream>
+#include <iomanip>
+
+class AverageMethods {
+public:
+    int Average(int numbers[], int size) {
+        int sum = 0;
+        for (int i = 0; i < size; i++) {
+            sum += numbers[i];
+        }
+        return sum / size;
+    }
+
+    float Average(float numbers[], int size) {
+        float sum = 0;
+        for (int i = 0; i < size; i++) {
+            sum += numbers[i];
+        }
+        return sum / size;
+    }
+};
+
+int main() {
+    int intArr[] = {1, 2, 3, 4, 5};
+    float floatArr[] = {1.5, 2.5, 3.5, 4.5, 5.5};
+
+    AverageMethods avgMethods;
+
+    std::cout << "Average of intArr: " << avgMethods.Average(intArr, 5) << std::endl;
+    std::cout << "Average of floatArr: " << std::fixed << std::setprecision(2) << avgMethods.Average(floatArr, 5) << std::endl;
+
+    return 0;
+}

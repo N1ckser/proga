@@ -1,0 +1,38 @@
+#include <iostream>
+
+class Rational {
+private:
+    int numerator;
+    int denominator;
+
+public:
+    Rational(int num, int den) : numerator(num), denominator(den) {}
+
+    Rational operator+(const Rational& other) {
+        int new_num = numerator * other.denominator + other.numerator * denominator;
+        int new_den = denominator * other.denominator;
+        return Rational(new_num, new_den);
+    }
+
+    Rational operator*(const Rational& other) {
+        int new_num = numerator * other.numerator;
+        int new_den = denominator * other.denominator;
+        return Rational(new_num, new_den);
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Rational& rational) {
+        os << rational.numerator << "/" << rational.denominator;
+        return os;
+    }
+};
+
+int main() {
+    Rational a(1, 2);
+    Rational b(1, 3);
+    Rational sum = a + b;
+    Rational product = a * b;
+
+    std::cout << "Sum: " << sum << std::endl;
+    std::cout << "Product: " << product << std::endl;
+    return 0;
+}

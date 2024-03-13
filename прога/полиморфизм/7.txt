@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+class Vehicle {
+public:
+    virtual void SpeedUp() {
+        cout << "Undefined speed-up method\n";
+    }
+};
+
+class Car : public Vehicle {
+public:
+    void SpeedUp() override {
+        cout << "Accelerating car\n";
+    }
+};
+
+class Bicycle : public Vehicle {
+public:
+    void SpeedUp() override {
+       cout << "Pedaling bicycle\n";
+    }
+};
+
+int main() {
+    Car car;
+    Bicycle bicycle;
+
+   cout<< "Car speed-up: ";
+    car.SpeedUp();
+
+    cout<< "Bicycle speed-up: ";
+    bicycle.SpeedUp();
+
+    return 0;
+}

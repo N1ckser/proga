@@ -1,0 +1,66 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Pet {
+private:
+    string name;
+    string animal_type;
+    int age;
+
+public:
+    // Конструктор класса Pet
+    Pet(string pet_name, string type, int pet_age) {
+        name = pet_name;
+        animal_type = type;
+        age = pet_age;
+    }
+
+    // Методы для установки значений полей
+    void set_name(string pet_name) {
+        name = pet_name;
+    }
+
+    void set_animal_type(string type) {
+        animal_type = type;
+    }
+
+    void set_age(int pet_age) {
+        age = pet_age;
+    }
+
+    // Методы для получения значений полей
+    string get_name() {
+        return name;
+    }
+
+    string get_animal_type() {
+        return animal_type;
+    }
+
+    int get_age() {
+        return age;
+    }
+};
+
+int main() {
+    // Создаем объект класса Pet
+    Pet my_pet("Buddy", "Dog", 3);
+
+    // Используем методы для получения значений полей
+    cout << "My pet's name is " << my_pet.get_name() << endl;
+    cout << "It is a " << my_pet.get_animal_type() << endl;
+    cout << "It is " << my_pet.get_age() << " years old" << endl;
+
+    // Используем методы для изменения значений полей
+    my_pet.set_name("Fluffy");
+    my_pet.set_animal_type("Cat");
+    my_pet.set_age(5);
+
+    cout << "\nUpdated pet information:" << endl;
+    cout << "My pet's name is " << my_pet.get_name() << endl;
+    cout << "It is a " << my_pet.get_animal_type() << endl;
+    cout << "It is " << my_pet.get_age() << " years old" << endl;
+
+    return 0;
+}

@@ -1,0 +1,61 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class RetailItem {
+private:
+    string description;
+    int units_on_hand;
+    double price;
+
+public:
+    // Конструктор класса RetailItem
+    RetailItem(string desc, int units, double p) {
+        description = desc;
+        units_on_hand = units;
+        price = p;
+    }
+
+    // Методы-получатели
+    string get_description() {
+        return description;
+    }
+
+    int get_units_on_hand() {
+        return units_on_hand;
+    }
+
+    double get_price() {
+        return price;
+    }
+};
+
+int main() {
+    system("chcp 65001");
+    // Создаем экземпляр класса RetailItem с заданными данными
+    RetailItem item1("Пиджак", 12, 59.95);
+    RetailItem item2("Дизайнерские джинсы", 40, 34.95);
+    RetailItem item3("Рубашка", 20, 24.95);
+
+    // Выводим данные по каждому товару на экран
+    cout << "Товар №1:" << endl;
+    cout << "Описание: " << item1.get_description() << endl;
+    cout << "Количество на складе: " << item1.get_units_on_hand() << endl;
+    cout << "Цена: $" << item1.get_price() << endl;
+
+    cout << endl;
+
+    cout << "Товар №2:" << endl;
+    cout << "Описание: " << item2.get_description() << endl;
+    cout << "Количество на складе: " << item2.get_units_on_hand() << endl;
+    cout << "Цена: $" << item2.get_price() << endl;
+
+    cout << endl;
+
+    cout << "Товар №3:" << endl;
+    cout << "Описание: " << item3.get_description() << endl;
+    cout << "Количество на складе: " << item3.get_units_on_hand() << endl;
+    cout << "Цена: $" << item3.get_price() << endl;
+
+    return 0;
+}

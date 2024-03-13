@@ -1,0 +1,45 @@
+#include <iostream>
+
+class Vehicle {
+public:
+    virtual void startEngine() const = 0;
+    virtual void stopEngine() const = 0;
+};
+
+class Car : public Vehicle {
+public:
+    void startEngine() const override {
+        std::cout << "Starting the car engine...\n";
+
+    }
+
+    void stopEngine() const override {
+        std::cout << "Stopping the car engine...\n";
+    }
+};
+
+class Motorcycle : public Vehicle {
+public:
+    void startEngine() const override {
+        std::cout << "Starting the motorcycle engine...\n";
+
+    }
+
+    void stopEngine() const override {
+        std::cout << "Stopping the motorcycle engine...\n";
+
+    }
+};
+
+int main() {
+    Car car;
+    Motorcycle motorcycle;
+
+    car.startEngine();
+    car.stopEngine();
+
+    motorcycle.startEngine();
+    motorcycle.stopEngine();
+
+    return 0;
+}

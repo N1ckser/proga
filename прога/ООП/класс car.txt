@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Car {
+private:
+    int year_model;
+    string manufacturer;
+    int speed;
+
+public:
+    // Конструктор класса Car
+    Car(int model, string manuf) {
+        year_model = model;
+        manufacturer = manuf;
+        speed = 0;
+    }
+
+    // Метод для ускорения
+    void accelerate() {
+        speed += 5;
+    }
+
+    // Метод для торможения
+    void brake() {
+        speed -= 5;
+    }
+
+    // Метод для получения текущей скорости
+    int get_speed() {
+        return speed;
+    }
+
+    // Метод для получения модели и года выпуска автомобиля
+    void get_info() {
+        cout << "Model: " << year_model << " " << manufacturer << endl;
+    }
+};
+
+int main() {
+    // Создаем объект класса Car
+    Car my_car(2022, "Toyota");
+
+    // Выводим информацию о модели и годе выпуска автомобиля
+    my_car.get_info();
+
+    // Ускоряемся несколько раз и выводим текущую скорость
+    for (int i = 0; i < 5; i++) {
+        my_car.accelerate();
+        cout << "Current speed after acceleration: " << my_car.get_speed() << " mph" << endl;
+    }
+
+    // Тормозим несколько раз и выводим текущую скорость
+    for (int i = 0; i < 3; i++) {
+        my_car.brake();
+        cout << "Current speed after braking: " << my_car.get_speed() << " mph" << endl;
+    }

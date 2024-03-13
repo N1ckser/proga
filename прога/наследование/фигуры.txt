@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+
+// Класс Shape
+class Shape {
+protected:
+    std::string color;
+
+public:
+    Shape(const std::string& c) : color(c) {}
+
+    virtual void draw() {
+        std::cout << "Это фигура цвета " << color << std::endl;
+    }
+};
+
+// Класс Circle, наследуемый от Shape
+class Circle : public Shape {
+private:
+    int x, y;
+    int radius;
+
+public:
+    Circle(const std::string& c, int a, int b, int r) : Shape(c), x(a), y(b), radius(r) {}
+
+    void draw() override {
+        std::cout << "Нарисован круг цвета " << color << " с координатами (" << x << ", " << y << ") и радиусом " << radius << std::endl;
+    }
+};
+
+// Класс Rectangle, наследуемый от Shape
+class Rectangle : public Shape {
+private:
+    int x1, y1, x2, y2;
+
+public:
+    Rectangle(const std::string& c, int a, int b, int c2, int d2) : Shape(c), x1(a), y1(b), x2(c2), y2(d2) {}
+
+    void draw() override {
+        std::cout << "Нарисован прямоугольник цвета " << color << " с координатами (" << x1 << ", " << y1 << ") и (" << x2 << ", " << y2 << ")" << std::endl;
+    }
+};
+
+int main() {
+    system("chcp 65001");
+    Shape* shapes[3]; // Массив указателей на фигуры
+
+    // Создаем объекты различных фигур
+    Circle circle("синий", 3, 4, 5);
+    Rectangle rectangle("красный", 1, 2, 6, 8);
+    Circle circle2("зеленый", 0, 0, 3);
+
+    // Заполняем массив указателями на созданные фигуры
+    shapes[0] = &circle;
+    shapes[1] = &rectangle;
+    shapes[2] = &circle2;
+
+    // Вызываем метод draw для каждой фигуры в массиве
+    for (int i = 0; i < 3; i++) {
+        shapes[i]->draw();
+    }
+
+    return 0;
+}

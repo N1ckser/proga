@@ -1,0 +1,105 @@
+#include <iostream>
+#include <string>
+
+class Animal {
+protected:
+    std::string name;
+
+public:
+    Animal(std::string animalName) : name(animalName) {}
+
+    virtual ~Animal() {}
+
+    virtual void makeNoise() {
+        std::cout << "Животное издает звуки" << std::endl;
+    }
+
+    virtual void eat() {
+        std::cout << "Животное питается" << std::endl;
+    }
+
+    virtual std::string getDescription() {
+        return "Это обычное животное";
+    }
+
+    std::string getName() {
+        return name;
+    }
+};
+
+class Dog : public Animal {
+public:
+    Dog(std::string dogName) : Animal(dogName) {}
+
+    void makeNoise() override {
+        std::cout << "Собака лает" << std::endl;
+    }
+
+    void eat() override {
+        std::cout << "Собака ест мясо" << std::endl;
+    }
+
+    std::string getDescription() override {
+        return "Это собака";
+    }
+};
+
+class Cat : public Animal {
+public:
+    Cat(std::string catName) : Animal(catName) {}
+
+    void makeNoise() override {
+        std::cout << "Кошка мяукает" << std::endl;
+    }
+
+    void eat() override {
+        std::cout << "Кошка ест рыбу" << std::endl;
+    }
+
+    std::string getDescription() override {
+        return "Это кошка";
+    }
+};
+
+class Bear : public Animal {
+public:
+    Bear(std::string bearName) : Animal(bearName) {}
+
+    void makeNoise() override {
+        std::cout << "Медведь рычит" << std::endl;
+    }
+
+    void eat() override {
+        std::cout << "Медведь ест рыбу и ягоды" << std::endl;
+    }
+
+    std::string getDescription() override {
+        return "Это медведь";
+    }
+};
+
+class Veterinarian {
+public:
+    void treatAnimal(Animal* animal) {
+        std::cout << "Пациент: " << animal->getName() << std::endl;
+        std::cout << "Описание: " << animal->getDescription() << std::endl;
+        animal->makeNoise();
+        animal->eat();
+    }
+};
+
+int main() {
+    system("chcp 65001");
+    Veterinarian vet;
+
+    Dog dog("Рекс");
+    vet.treatAnimal(&dog);
+
+    Cat cat("Мурка");
+    vet.treatAnimal(&cat);
+
+    Bear bear("Миша");
+    vet.treatAnimal(&bear);
+
+    return 0;
+}

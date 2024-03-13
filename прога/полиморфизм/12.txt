@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+class Animal {
+public:
+    virtual void move() const {
+        cout << "Undefined movement\n";
+    }
+
+    virtual void makeSound() const {
+        cout << "Undefined sound\n";
+    }
+};
+
+class Bird : public Animal {
+public:
+    void move() const override {
+        cout << "Flying\n";
+    }
+
+    void makeSound() const override {
+       cout << "Chirp chirp\n";
+    }
+};
+
+class Panthera : public Animal {
+public:
+    void move() const override {
+        cout << "Running\n";
+    }
+
+    void makeSound() const override {
+       cout << "Roar\n";
+    }
+};
+
+int main() {
+    Bird bird;
+    Panthera panther;
+
+    cout << "Bird movement: ";
+    bird.move();
+    cout << "Bird sound: ";
+    bird.makeSound();
+
+    cout << "Panther movement: ";
+    panther.move();
+    cout << "Panther sound: ";
+    panther.makeSound();
+
+    return 0;
+}

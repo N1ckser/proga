@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+class Sports {
+public:
+    virtual void play() const {
+        cout << "Undefined play method\n";
+    }
+};
+
+class Football : public Sports {
+public:
+    void play() const override {
+        cout << "Playing football\n";
+    }
+};
+
+class Basketball : public Sports {
+public:
+    void play() const override {
+        cout << "Playing basketball\n";
+    }
+};
+
+class Rugby : public Sports {
+public:
+    void play() const override {
+        cout << "Playing rugby\n";
+    }
+};
+
+int main() {
+    Football football;
+    Basketball basketball;
+    Rugby rugby;
+
+   cout << "Football: ";
+    football.play();
+
+   cout << "Basketball: ";
+    basketball.play();
+
+   cout << "Rugby: ";
+    rugby.play();
+
+    return 0;
+}

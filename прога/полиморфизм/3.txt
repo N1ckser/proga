@@ -1,0 +1,24 @@
+#include <iostream>
+
+class MaxMethods {
+public:
+    int Max(int a, int b) {
+        return (a > b) ? a : b;
+    }
+
+    int Max(int a, int b, int c) {
+        return Max(Max(a, b), c);
+    }
+
+    int Max(int a, int b, int c, int d) {
+        return Max(Max(a, b, c), d);
+    }
+};
+
+int main() {
+    MaxMethods max;
+    std::cout << max.Max(5, 10) << std::endl; // Выведет 10
+    std::cout << max.Max(3, 8, 2) << std::endl; // Выведет 8
+    std::cout << max.Max(4, 1, 7, 2) << std::endl; // Выведет 7
+    return 0;
+}

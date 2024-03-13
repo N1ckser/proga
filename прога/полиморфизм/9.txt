@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+class Employee {
+public:
+    virtual double CalculateSalary() const {
+       cout << "Undefined salary calculation\n";
+        return 0.0;
+    }
+};
+
+class Manager : public Employee {
+public:
+    double CalculateSalary() const override {
+// Расчет зарплаты для менеджера
+        return 50000.0; // Примерная сумма, реальный расчет может быть другим
+    }
+};
+
+class Programmer : public Employee {
+public:
+    double CalculateSalary() const override {
+// Расчет зарплаты для программиста
+        return 60000.0; // Примерная сумма, реальный расчет может быть другим
+    }
+};
+
+int main() {
+    Manager manager;
+    Programmer programmer;
+
+    cout << "Manager's salary: $" << manager.CalculateSalary() << std::endl;
+    cout << "Programmer's salary: $" << programmer.CalculateSalary() << std::endl;
+
+    return 0;
+}

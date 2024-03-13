@@ -1,0 +1,36 @@
+#include <iostream>
+
+class Animal {
+public:
+    virtual void Sound() const {
+        std::cout << "Undefined sound\n";
+    }
+};
+
+class Bird : public Animal {
+public:
+    void Sound() const override {
+        std::cout << "Чик чирик\n";
+    }
+};
+
+class Cat : public Animal {
+public:
+    void Sound() const override {
+        std::cout << "мяу\n";
+    }
+};
+
+int main() {
+    system("chcp 65001");
+    Bird bird;
+    Cat cat;
+
+    std::cout << "Bird sounds: ";
+    bird.Sound();
+
+    std::cout << "Cat sounds: ";
+    cat.Sound();
+
+    return 0;
+}

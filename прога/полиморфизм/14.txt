@@ -1,0 +1,77 @@
+#include <iostream>
+
+class BankAccount {
+protected:
+    double balance;
+
+public:
+    BankAccount() : balance(0) {}
+
+    void deposit(double amount) {
+        balance += amount;
+        std::cout << "Deposited $" << amount << " successfully.\n";
+    }
+
+    virtual void withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            std::cout << "Withdrawal of $" << amount << " successful.\n";
+        } else {
+            std::cout << "Insufficient funds for withdrawal of $" << amount << ".\n";
+        }
+    }
+
+    double getBalance() const {
+        return balance;
+    }
+};
+
+class SavingsAccount : public BankAccount {
+public:
+    void withdraw(double amount) override {
+        const double withdrawalFee = 1.0;
+        const double minimumBalance = 100.0;
+
+        if (balance - amount >= minimumBalance) {
+            balance -= amount;
+            balance -= withdrawalFee;
+            std::cout << "Withdrawal of $" << amount << " successful with a fee of $" << withdrawalFee << ".\n";
+        } else {
+            std::cout << "Insufficient funds for withdrawal of $" << amount << ".\n";
+        }
+    }
+};
+
+class CheckingAccount : public BankAccount {
+public:
+    void withdraw(double amount) override {
+        const double overdraftFee = 10.0;
+
+        if (balance - amount >= 0) {
+            balance -= amount;
+            std::cout << "Withdrawal of $" << amount << " successful.\n";
+        } else if (balance - amount >= -100) {
+            balance -= amount;
+            balance -= overdraftFee;
+            std::cout << "Withdrawal of $" << amount << " successful with an overdraft fee of $" << overdraftFee << ".\n";
+        } else {
+            std::cout << "Insufficient funds for withdrawal of $" << amount << ".\n";
+        }
+    }
+};
+
+int main() {
+    SavingsAccount savingsAccount;
+    CheckingAccount checkingAccount;
+
+    savingsAccount.deposit(500);
+    savingsAccount.withdraw(100);
+
+    checkingAccount.deposit(200);
+    checkingAccount.withdraw(150);
+
+    std::cout << "Savings account balance: $" << savingsAccount.getBalance() << std::endl;
+    std::cout << "Checking account balance: $" << checkingAccount.getBalance() << std::endl;
+
+    return 0;
+}

@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+class Shape {
+public:
+    virtual void draw() const = 0;
+    virtual double CalculationArea() const = 0;
+};
+
+class Circle : public Shape {
+private:
+    double radius;
+
+public:
+    Circle(double r) : radius(r) {}
+
+    void draw() const override {
+        cout << "Drawing a circle\n";
+    }
+
+    double CalculationArea() const override {
+        return 3.14159 * radius * radius;
+    }
+};
+
+class Square : public Shape {
+private:
+    double side;
+
+public:
+    Square(double s) : side(s) {}
+
+    void draw() const override {
+        cout << "Drawing a square\n";
+    }
+
+    double CalculationArea() const override {
+        return side * side;
+    }
+};
+
+class Triangle : public Shape {
+private:
+    double base, height;
+
+public:
+    Triangle(double b, double h) : base(b), height(h) {}
+
+    void draw() const override {
+        cout << "Drawing a triangle\n";
+    }
+
+    double CalculationArea() const override {
+        return 0.5 * base * height;
+    }
+};
+
+int main() {
+    Circle circle(5);
+    Square square(4);
+    Triangle triangle(3, 4);
+
+    circle.draw();
+    cout << "Circle area: " << circle.CalculationArea() << std::endl;
+
+    square.draw();
+    cout << "Square area: " << square.CalculationArea() << std::endl;
+
+    triangle.draw();
+    cout << "Triangle area: " << triangle.CalculationArea() << std::endl;
+
+    return 0;
+}

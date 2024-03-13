@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Phone {
+private:
+    string number;
+    string model;
+    int weight;
+
+public:
+    // Конструктор класса с тремя параметрами
+    Phone(string num, string mod, double w) {
+        number = num;
+        model = mod;
+        weight = w;
+    }
+
+    // Конструктор класса с двумя параметрами
+    Phone(string num, string mod) {
+        number = num;
+        model = mod;
+    }
+
+    // Конструктор без параметров
+    Phone() {
+        number = "";
+        model = "";
+        weight = 0;
+    }
+
+    // Метод receiveCall
+    void receiveCall(string callerName) {
+        cout << "Звонит " << callerName << endl;
+    }
+
+    // Метод getNumber
+    string getNumber() {
+        return number;
+    }
+
+    // Метод для вывода модели и веса телефона
+    void printInfo() {
+        cout << "Модель: " << model << endl;
+        cout << "Вес: " << weight << " г" << endl;
+    }
+};
+
+int main() {
+    system("chcp 65001");
+    // Создаем три экземпляра класса Phone с разными конструкторами
+    Phone phone1("123456789", "iPhone", 300);
+    Phone phone2("987654321", "Samsung", 250);
+    Phone phone3("987654434", "Xiaomi", 325);
+
+    // Вызываем методы для каждого объекта
+    phone1.receiveCall("Аня");
+    cout << "Номер телефона: " << phone1.getNumber() << endl;
+    phone1.printInfo();
+
+    cout << endl;
+
+    phone2.receiveCall("Петя");
+    cout << "Номер телефона: " << phone2.getNumber() << endl;
+    phone2.printInfo();
+
+    cout << endl;
+
+    phone3.receiveCall("Вася");
+    cout << "Номер телефона: " << phone3.getNumber() << endl;
+    phone3.printInfo();
+
+    return 0;
+}
